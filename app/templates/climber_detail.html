@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+
+{% block title %}Climber Detail | Bouldering Tracker{% endblock %}
+
+{% block content %}
+<h1 class="h3 mb-3">
+  {{ climber.first_name }} {{ climber.last_name }}
+</h1>
+
+<p><strong>Email:</strong> {{ climber.email }}</p>
+<p><strong>Experience:</strong> {{ climber.experience_level }}</p>
+<p><strong>Last Session Date:</strong> {{ climber.last_session_date or "No sessions yet" }}</p>
+
+<hr>
+
+<h2 class="h5">Training Sessions</h2>
+
+{% if climber.sessions %}
+  <ul class="list-group">
+    {% for session in climber.sessions %}
+      <li class="list-group-item">
+        {{ session.session_date }} —
+        {{ session.duration_minutes }} minutes —
+        Intensity {{ session.perceived_intensity }}
+
+        {% if session.notes %}
+          <br><small>{{ session.notes }}</small>
+        {% endif %}
+      </li>
+    {% endfor %}
+  </ul>
+{% else %}
+  <p>No sessions yet.</p>
+{% endif %}
+{% endblock %}
