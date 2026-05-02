@@ -5,31 +5,30 @@ A full-stack web application built using Flask and SQLAlchemy that allows users 
 ---
 
 ## Project Structure
-
-
+```
 training_scheduler_app/
-app/
-init.py
-extensions.py
-models.py
-routes.py
-static/css/styles.css
-templates/base.html
-templates/index.html
-templates/climbers.html
-templates/add_climber.html
-templates/climber_detail.html
-templates/add_session.html
-instance/
-app.db
-config.py
-run.py
-requirements.txt
-.gitignore
-README.md
-NORMALIZATION.md
-schema.sql
-
+  app/
+    __init__.py
+    extensions.py
+    models.py
+    routes.py
+    static/css/styles.css
+    templates/base.html
+    templates/index.html
+    templates/climbers.html
+    templates/add_climber.html
+    templates/climber_detail.html
+    templates/add_session.html
+  instance/
+    app.db
+  config.py
+  run.py
+  requirements.txt
+  .gitignore
+  README.md
+  NORMALIZATION.md
+  schema.sql
+```
 
 ---
 
