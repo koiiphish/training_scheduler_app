@@ -13,7 +13,11 @@ class Climber(db.Model):
     last_session_date = db.Column(db.Date)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
-    sessions = db.relationship("TrainingSession", backref="climber")
+    sessions = db.relationship(
+        "TrainingSession",
+        backref="climber",
+        cascade="all, delete-orphan"
+    )
 
 
 class SessionType(db.Model):
@@ -25,7 +29,10 @@ class SessionType(db.Model):
     description = db.Column(db.String(255))
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
 
-    sessions = db.relationship("TrainingSession", backref="session_type")
+    sessions = db.relationship(
+        "TrainingSession",
+        backref="session_type"
+    )
 
 
 class TrainingSession(db.Model):

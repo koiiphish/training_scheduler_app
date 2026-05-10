@@ -7,13 +7,13 @@
 
 {% if climbers %}
   <table class="table table-striped">
-    <thead>
-      <tr>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Experience</th>
-      </tr>
-    </thead>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Experience</th>
+    </tr>
+  </thead>
     <tbody>
       {% for climber in climbers %}
         <tr>
@@ -24,6 +24,15 @@
         </td>
           <td>{{ climber.email }}</td>
           <td>{{ climber.experience_level }}</td>
+
+          <td>
+            <form method="POST"
+                  action="{{ url_for('main.delete_climber', climber_id=climber.climber_id) }}">
+              <button type="submit" class="btn btn-danger btn-sm">
+                Delete
+              </button>
+            </form>
+          </td>
         </tr>
       {% endfor %}
     </tbody>

@@ -142,3 +142,30 @@ def add_session():
         return redirect(url_for("main.climber_detail", climber_id=climber_id))
 
     return render_template("add_session.html", climbers=climbers, session_types=session_types)
+
+@main.route("/climbers/delete/<int:climber_id>", methods=["POST"])
+def delete_climber(climber_id):
+    climber = Climber.query.get_or_404(climber_id)
+
+    try:
+        db.session.delete(climber)
+        db.session.commit()
+    except:
+        db.session.rollback()
+        return "Delete failed."
+
+    return redirect(url_for("main.view_climbers"))
+
+@main.route("/sessions/delete/<int:session_id>", methods=["POST"])
+def delete_session(session_id):
+    session = TrainingSession.query.get_or_404(session_id)
+    climber_id = session.climber_id
+
+    try:
+        db.session.delete(session)
+        db.session.commit()
+    except:
+        db.session.rollback()
+        return "Delete session failed."
+
+    return redirect(url_for("main.climber_detail", climber_id=climber_id))
